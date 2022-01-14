@@ -1,0 +1,72 @@
+#pragma once
+
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <map>
+
+namespace rcp
+{
+    enum rcp_supported_json_objects
+    {
+        RCP_SUPPORTED_JSON_RCP_CREATE_PRESET,
+        RCP_SUPPORTED_JSON_RCP_CONFIG,
+        RCP_SUPPORTED_JSON_RCP_CUR_AUDIO_VU,
+        RCP_SUPPORTED_JSON_RCP_CUR_CAM_INFO,
+        RCP_SUPPORTED_JSON_RCP_CUR_CLIP_LIST,
+        RCP_SUPPORTED_JSON_RCP_CUR_DEFAULT_IN,
+        RCP_SUPPORTED_JSON_RCP_CUR_HIST,
+        RCP_SUPPORTED_JSON_RCP_CUR_INT,
+        RCP_SUPPORTED_JSON_RCP_CUR_INT_EDIT_I,
+        RCP_SUPPORTED_JSON_RCP_CUR_LIST,
+        RCP_SUPPORTED_JSON_RCP_CUR_MENU,
+        RCP_SUPPORTED_JSON_RCP_CUR_MENU_NODE_,
+        RCP_SUPPORTED_JSON_RCP_CUR_POINT,
+        RCP_SUPPORTED_JSON_RCP_CUR_RECT,
+        RCP_SUPPORTED_JSON_RCP_CUR_STATUS,
+        RCP_SUPPORTED_JSON_RCP_CUR_STR,
+        RCP_SUPPORTED_JSON_RCP_CUR_STR_EDIT_I,
+        RCP_SUPPORTED_JSON_RCP_CUR_UINT,
+        RCP_SUPPORTED_JSON_RCP_GET,
+        RCP_SUPPORTED_JSON_RCP_GET_CLIP_LIST,
+        RCP_SUPPORTED_JSON_RCP_GET_DEFAULT,
+        RCP_SUPPORTED_JSON_RCP_GET_LABEL,
+        RCP_SUPPORTED_JSON_RCP_GET_LIST,
+        RCP_SUPPORTED_JSON_RCP_GET_MENU,
+        RCP_SUPPORTED_JSON_RCP_GET_MENU_STATU,
+        RCP_SUPPORTED_JSON_RCP_GET_STATUS,
+        RCP_SUPPORTED_JSON_RCP_LABEL,
+        RCP_SUPPORTED_JSON_RCP_MENU,
+        RCP_SUPPORTED_JSON_RCP_MENU_STATUS,
+        RCP_SUPPORTED_JSON_RCP_NOTIFICATION,
+        RCP_SUPPORTED_JSON_RCP_NOTIFICATION_G,
+        RCP_SUPPORTED_JSON_RCP_NOTIFICATION_R,
+        RCP_SUPPORTED_JSON_RCP_NOTIFICATION_T,
+        RCP_SUPPORTED_JSON_RCP_SET,
+        RCP_SUPPORTED_JSON_RCP_SET_RELATIVE,
+        RCP_SUPPORTED_JSON_RCP_SET_LIST_RELATIVE,
+        RCP_SUPPORTED_JSON_RCP_SUBSCRIBE,
+    };
+
+    enum rcp_param_type
+    {
+        RCP_PARAM_TYPE_VALUE,
+        RCP_PARAM_TYPE_ACTION,
+        RCP_PARAM_TYPE_DISPLAY,
+        RCP_PARAM_TYPE_STATUS,
+        RCP_PARAM_TYPE_SIGNAL,
+        RCP_PARAM_TYPE_INDEXED_STATUS
+    };
+
+    struct rcp_param
+    {
+        std::string param_name;
+        std::string desc;
+        rcp_param_type param_type;
+        std::vector<rcp_supported_json_objects> supported_objects;
+        bool supported;
+    };
+
+    extern std::map<std::string, rcp_param> rcp_commands;
+
+}
